@@ -38,6 +38,9 @@ pipeline {
 				}
 				stage('Publish image') {
 					steps {
+						withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+							sh "docker login -u janagarajs -p ${dockerhubpwd}"
+						}
 						sh "docker push janagarajs/helloworld-image"
 					}
 				}
