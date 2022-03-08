@@ -29,13 +29,19 @@ pipeline {
 
             }
         }
-        stage('Publish Docker Image') {
-            steps {
-               script {
-                   sh "docker push janagarajs/helloworld-image"
-               }               
-
-            }
+        stage('Create container and Publish Image') {
+			parallel {
+				stage('Create container') {
+					steps {
+						sh "docker run -d -p 8081:8080 janagarajs/helloworld-image"
+					}
+				}
+				stage('Publish image') {
+					steps {
+						sh "docker push janagarajs/helloworld-image"
+					}
+				}
+			}
         }
     }
 }
