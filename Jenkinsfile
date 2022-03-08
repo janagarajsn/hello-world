@@ -29,5 +29,13 @@ pipeline {
 
             }
         }
+        stage('Publish Docker Image') {
+            steps {
+               script {
+                   sh "docker push janagarajsn/helloworld-image"
+               }               
+
+            }
+        }
     }
 }
