@@ -24,7 +24,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                script {
-                   sh "docker build -t janagarajsn/helloworld-image ."
+                   sh "docker build -t janagarajs/helloworld-image ."
                }               
 
             }
@@ -32,7 +32,7 @@ pipeline {
         stage('Publish Docker Image') {
             steps {
                script {
-                   sh "docker push janagarajsn/helloworld-image"
+                   sh "docker push janagarajs/helloworld-image"
                }               
 
             }
